@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateEnrolTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('enrol', function (Blueprint $table) {
             $table->id();
-            $table->id('user_id');
-            $table->id('event_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('event_id');
             $table->boolean('paid');
-            $table->foreign('user_id') ->references('id')->on('users');
-            $table->foreign('event_id') ->references('id')->on('events');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -28,4 +28,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('enrol');
     }
-};
+}
