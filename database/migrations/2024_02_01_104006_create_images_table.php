@@ -17,7 +17,7 @@ return new class extends Migration
                 $table->string('path');
                 $table->string('image_title');
                 $table->string('description');
-                $table->integer('event_id');
+                $table->unsignedBigInteger('event_id');
                 $table->foreign('event_id')->references('id')->on('events');
             });
         }

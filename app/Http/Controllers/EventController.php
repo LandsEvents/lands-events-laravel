@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+
+    public function index()
+    {
+        $events = Event::all();
+
+        return view('events.index', ['events' => $events]);
+    }
     public function create()
     {
         return view('events.create');
@@ -13,16 +21,38 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->name = $request->get('name');
-        $post->date = $request->get('begin_date');
-        $post->date = $request->get('end_date');
-        $post->time = $request->get('time');
-        $post->description = $request->get('description');
-        $post->category = $request->get('category');
-        $post->location = $request->get('location');
-        $post->price = $request->get('price');
-        $post->image = '';
-        $post->save();
+        $request->validate([
+            'name' => 'required',
+            'begin_date' => 'required',
+            'end_date' => 'required',
+            'time' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'location' => 'required',
+            'price' => 'required',
+        ]);
+
+        $event = new Event();
+        $event->name = $request->get('name');
+        $event->begin_date = $request->get('begin_date');
+        $event->end_date = $request->get('end_date');
+        $event->time = $request->get('time');
+        $event->description = $request->get('description');
+        $event->category = $request->get('category');
+        $event->location = $request->get('location');
+        $event->price = $request->get('price');
+        // $event->image = '';
+        $event->save();
+
+        return redirect()->route('events.index')->with('success', 'Event aangemaakt!');
     }
+
+    public function destroy($id)
+    {
+        $event = Event::findOrFail($id);
+        $event->delete();
+
+        return redirect()->route('events.index')->with('success', 'Event verwijderd!');
+    }
+
 }

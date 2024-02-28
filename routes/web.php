@@ -18,9 +18,13 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/dashboard/events', [\App\Http\Controllers\EventController::class, 'index'])->name('events.index');
+
 Route::get('/dashboard/events/create', [\App\Http\Controllers\EventController::class, 'create'])->name('events.create');
 
 Route::post('/dashboard/events', [\App\Http\Controllers\EventController::class, 'store'])->name('events.store');
+
+Route::delete('/dashboard/events/delete/{id}', [\App\Http\Controllers\EventController::class, 'destroy'])->name('events.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
