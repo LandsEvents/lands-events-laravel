@@ -26,6 +26,10 @@ Route::post('/dashboard/events', [\App\Http\Controllers\EventController::class, 
 
 Route::delete('/dashboard/events/delete/{id}', [\App\Http\Controllers\EventController::class, 'destroy'])->name('events.destroy');
 
+Route::get('/dashboard/events/edit/{id}', [\App\Http\Controllers\EventController::class, 'edit'])->name('events.edit');
+
+Route::post('/dashboard/events/{id}', [\App\Http\Controllers\EventController::class, 'update'])->name('events.update');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
