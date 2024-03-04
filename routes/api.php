@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test', function () {
+Route::get('/events', function () {
     $data =(new App\Http\Controllers\EventController)->getAll();
     return $data;
 });
