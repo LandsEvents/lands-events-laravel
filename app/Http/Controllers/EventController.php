@@ -14,6 +14,13 @@ class EventController extends Controller
 
         return view('events.index', ['events' => $events]);
     }
+
+    public function getAll()
+    {
+        $events = Event::all();
+
+        return $events;
+    }
     public function create()
     {
         return view('events.create');

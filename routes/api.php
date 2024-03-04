@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', function () {
-    $data = ["message" => "test message"];
-
-    return response()->json($data);
+    $data =(new App\Http\Controllers\EventController)->getAll();
+    return $data;
 });
