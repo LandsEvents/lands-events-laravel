@@ -8,13 +8,15 @@
 
 @foreach ($events as $event)
     <h2>{{ $event->name }}</h2>
+
+    <a href="{{ route('events.edit', $event->id) }}">Bewerken</a>
+
     <form action="{{ route('events.destroy', $event->id) }}" method="post">
         @csrf
         @method('delete')
         <button type="submit">Delete</button>
     {{ $event->begin_date }}
     {{ $event->end_date }}
-    {{ $event->time }}
    <p>{{ $event->description }}</p>
     <p>{{ $event->category }}</p>
     <p>{{ $event->location }}</p>

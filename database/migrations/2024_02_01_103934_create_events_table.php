@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->datetime('begin_date');
             $table->datetime('end_date');
-            $table->time('time');
             $table->string('description');
             $table->string('category');
             $table->string('location');
