@@ -4,16 +4,12 @@
     @error('name')
     {{ $message }}
     @enderror
-    <input type="date" name="begin_date">
+    <input type="datetime-local" name="begin_date">
     @error('begin_date')
     {{ $message }}
     @enderror
-    <input type="date" name="end_date">
+    <input type="datetime-local" name="end_date">
     @error('end_date')
-    {{ $message }}
-    @enderror
-    <input type="time" name="time" placeholder="name">
-    @error('time')
     {{ $message }}
     @enderror
     <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
@@ -30,6 +26,10 @@
     @enderror
     <input type="number" name="price" placeholder="price">
     @error('price')
+    {{ $message }}
+    @enderror
+    <input type="file" name="image">
+    @error('image')
     {{ $message }}
     @enderror
     <button type="submit">Aanmaken</button>

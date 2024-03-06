@@ -25,24 +25,27 @@ class EventController extends Controller
             'name' => 'required',
             'begin_date' => 'required',
             'end_date' => 'required',
-            'time' => 'required',
             'description' => 'required',
             'category' => 'required',
             'location' => 'required',
             'price' => 'required',
+            'image' => 'required',
         ]);
 
         $event = new Event();
         $event->name = $request->get('name');
         $event->begin_date = $request->get('begin_date');
         $event->end_date = $request->get('end_date');
-        $event->time = $request->get('time');
         $event->description = $request->get('description');
         $event->category = $request->get('category');
         $event->location = $request->get('location');
         $event->price = $request->get('price');
-        // $event->image = '';
         $event->save();
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('events', ['disk' => 'public']);
+            $event->image = $path;
+        }
 
         return redirect()->route('events.index')->with('success', 'Event aangemaakt!');
     }    public function update($id, Request $request)
@@ -51,7 +54,6 @@ class EventController extends Controller
             'name' => 'required',
             'begin_date' => 'required',
             'end_date' => 'required',
-            'time' => 'required',
             'description' => 'required',
             'category' => 'required',
             'location' => 'required',
@@ -62,12 +64,11 @@ class EventController extends Controller
         $event->name = $request->get('name');
         $event->begin_date = $request->get('begin_date');
         $event->end_date = $request->get('end_date');
-        $event->time = $request->get('time');
         $event->description = $request->get('description');
         $event->category = $request->get('category');
         $event->location = $request->get('location');
         $event->price = $request->get('price');
-        // $event->image = '';
+        $event->image = $request->get('image');
         $event->save();
 
         return redirect()->route('events.index')->with('success', 'Event bewerken');

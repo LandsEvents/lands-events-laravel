@@ -17,7 +17,6 @@
         <button type="submit">Delete</button>
     {{ $event->begin_date }}
     {{ $event->end_date }}
-    {{ $event->time }}
    <p>{{ $event->description }}</p>
     <p>{{ $event->category }}</p>
     <p>{{ $event->location }}</p>

@@ -4,16 +4,12 @@
     @error('name')
     {{ $message }}
     @enderror
-    <input type="date" name="begin_date" {{ $event->begin_date }}>
+    <input type="datetime-local" name="begin_date" {{ $event->begin_date }}>
     @error('begin_date')
     {{ $message }}
     @enderror
-    <input type="date" name="end_date" {{ $event->end_date }}>
+    <input type="datetime-local" name="end_date" {{ $event->end_date }}>
     @error('end_date')
-    {{ $message }}
-    @enderror
-    <input type="time" name="time" placeholder="name" {{ $event->time }}>
-    @error('time')
     {{ $message }}
     @enderror
     <textarea name="description" id="" cols="30" rows="10" {{ $event->description }} placeholder="description"></textarea>
