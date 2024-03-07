@@ -1,4 +1,4 @@
-<form action="{{ route('events.update', $event->id) }}" method="post">
+<form action="{{ route('events.update', $event->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="text" name="name" placeholder="name" value=" {{ $event->name }}">
     @error('name')
@@ -28,5 +28,6 @@
     @error('price')
     {{ $message }}
     @enderror
+    <input type="file" name="image" value=" {{ $event->image }}">
     <button type="submit">Bewerken</button>
 </form>

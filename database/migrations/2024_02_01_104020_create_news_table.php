@@ -13,11 +13,11 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
             $table->string('news_title');
             $table->longText('body');
-            $table->unsignedBigInteger('event_id');
+        $table->unsignedBigInteger('event_id');
             $table->foreign('event_id')->references('id')->on('events');
+            $table->timestamps();
         });
     }
 

@@ -7,6 +7,8 @@
 @endif
 
 @foreach ($events as $event)
+
+    <img src="{{asset('storage/' . $event->image) }}" alt="image" style="width: 300px; height: 300px;">
     <h2>{{ $event->name }}</h2>
 
     <a href="{{ route('events.edit', $event->id) }}">Bewerken</a>

@@ -1,4 +1,4 @@
-<form action="{{ route('events.store') }}" method="post">
+<form action="{{ route('events.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="text" name="name" placeholder="name">
     @error('name')

@@ -30,6 +30,18 @@ Route::get('/dashboard/events/edit/{id}', [\App\Http\Controllers\EventController
 
 Route::post('/dashboard/events/{id}', [\App\Http\Controllers\EventController::class, 'update'])->name('events.update');
 
+Route::get('/dashboard/news', [\App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
+
+Route::get('/dashboard/news/create', [\App\Http\Controllers\NewsController::class, 'create'])->name('news.create');
+
+Route::post('/dashboard/news', [\App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
+
+Route::delete('/dashboard/news/delete/{id}', [\App\Http\Controllers\NewsController::class, 'destroy'])->name('news.destroy');
+
+Route::get('/dashboard/news/edit/{id}', [\App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit');
+
+Route::post('/dashboard/news/{id}', [\App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
