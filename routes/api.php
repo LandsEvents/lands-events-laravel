@@ -23,3 +23,8 @@ Route::get('/events', function () {
     $data =(new App\Http\Controllers\EventController)->getAll();
     return $data;
 });
+
+Route::get('/events/{id}', function (int $id) {
+    $data = (new App\Http\Controllers\EventController)->getId($id);
+    return $data;
+});
