@@ -36,7 +36,7 @@ class EventController extends Controller
             'category' => 'required',
             'location' => 'required',
             'price' => 'required',
-            'image' => 'required',
+            'image' => 'required|image',
         ]);
 
         $event = new Event();
@@ -47,12 +47,10 @@ class EventController extends Controller
         $event->category = $request->get('category');
         $event->location = $request->get('location');
         $event->price = $request->get('price');
+        $event->image = $request->get('image');
+        $path = $request->file('image')->store('events', ['disk' => 'public']);
+        $event->image = $path;
         $event->save();
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('events', ['disk' => 'public']);
-            $event->image = $path;
-        }
 
         return redirect()->route('events.index')->with('success', 'Event aangemaakt!');
     }    public function update($id, Request $request)
@@ -65,6 +63,7 @@ class EventController extends Controller
             'category' => 'required',
             'location' => 'required',
             'price' => 'required',
+            'image' => 'image',
         ]);
 
         $event = Event::findOrFail($id);
@@ -75,7 +74,10 @@ class EventController extends Controller
         $event->category = $request->get('category');
         $event->location = $request->get('location');
         $event->price = $request->get('price');
-        $event->image = $request->get('image');
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('events', ['disk' => 'public']);
+            $event->image = $path;
+        }
         $event->save();
 
         return redirect()->route('events.index')->with('success', 'Event bewerken');
