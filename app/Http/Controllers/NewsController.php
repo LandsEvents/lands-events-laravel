@@ -17,9 +17,12 @@ class NewsController extends Controller
 
     public function getAll()
     {
-        $articles = News::all();
+        return News::all();
+    }
 
-        return $articles;
+    public function getId($id)
+    {
+        return News::findOrFail($id);
     }
     public function create()
     {

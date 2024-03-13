@@ -20,11 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/events', function () {
-    $data =(new App\Http\Controllers\EventController)->getAll();
-    return $data;
+    return (new App\Http\Controllers\EventController)->getAll();
 });
 
 Route::get('/events/{id}', function (int $id) {
-    $data = (new App\Http\Controllers\EventController)->getId($id);
-    return $data;
+    return (new App\Http\Controllers\EventController)->getId($id);
+});
+
+Route::get('/news', function () {
+    return (new App\Http\Controllers\NewsController())->getAll();
+});
+
+Route::get('/news/{id}', function (int $id) {
+    return (new App\Http\Controllers\NewsController())->getId($id);
 });
