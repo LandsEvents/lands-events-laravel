@@ -17,9 +17,8 @@ return new class extends Migration
                 $table->string('path');
                 $table->string('image_title');
                 $table->string('description');
-                $table->unsignedBigInteger('event_id');
-                $table->foreign('event_id')->references('id')->on('events');
-                $table->foreign('album_id')->references('id')->on('albums');
+                $table->foreignID('event_id')->constrained();
+                $table->foreignID('album_id')->constrained();
             });
         }
     }
