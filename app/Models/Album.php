@@ -7,12 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
-    use HasFactory;
+    protected $guarded = [];
 
-    protected $fillable = [
-        'name',
-        'thumbnail',
-        'location',
-        'date',
-    ];
+    public $timestamps = true; // Add this line
+    use HasFactory;
 }

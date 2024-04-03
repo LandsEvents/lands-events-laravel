@@ -12,9 +12,5 @@
     @error('date')
     {{ $message }}
     @enderror
-    <input type="file" name="image">
-    @error('image')
-    {{ $message }}
-    @enderror
     <button type="submit">Aanmaken</button>
 </form>

@@ -35,22 +35,18 @@ class AlbumController extends Controller
 
     public function store(Request $request)
     {
+
+
         $request->validate([
             'name' => 'required',
-            'thumbnail' => 'required',
             'location' => 'required',
             'date' => 'required',
-            'image' => 'required|image',
         ]);
 
         $album = new Album();
         $album->name = $request->get('name');
-        $album->thumbnail = $request->get('thumbnail');
         $album->location = $request->get('location');
         $album->date = $request->get('date');
-        $album->image = $request->get('image');
-        $path = $request->file('image')->store('albums', ['disk' => 'public']);
-        $album->image = $path;
         $album->save();
 
         return redirect()->route('albums.index')->with('success', 'album aangemaakt!');
@@ -58,20 +54,14 @@ class AlbumController extends Controller
 {
     $request->validate([
         'name' => 'required',
-        'thumbnail' => 'required',
         'location' => 'required',
         'date' => 'required',
     ]);
 
     $album = Album::findOrFail($id);
     $album->name = $request->get('name');
-    $album->thumbnail = $request->get('thumbnail');
     $album->location = $request->get('location');
     $album->date = $request->get('date');
-    if ($request->file('image')) {
-        $path = $request->file('image')->store('albums', ['disk' => 'public']);
-        $album->image = $path;
-    }
     $album->save();
 
     return redirect()->route('albums.index')->with('success', 'album bewerken');

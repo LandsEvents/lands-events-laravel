@@ -12,6 +12,5 @@
     @error('date')
     {{ $message }}
     @enderror
-    <input type="file" name="image" value=" {{ $album->thumbnail }}">
     <button type="submit">Bewerken</button>
 </form>

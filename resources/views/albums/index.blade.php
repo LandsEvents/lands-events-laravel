@@ -8,12 +8,11 @@
 
 @foreach ($albums as $album)
 
-    <img src="{{asset('storage/' . $album->thumbnail) }}" alt="image" style="width: 300px; height: 300px;">
     <h2>{{ $album->name }}</h2>
 
     <a href="{{ route('albums.edit', $album->id) }}">Bewerken</a>
 
-    <form action="{{ route('albums.destroy', $event->id) }}" method="post">
+    <form action="{{ route('albums.destroy', $album->id) }}" method="post">
         @csrf
         @method('delete')
         <button type="submit">Delete</button>
