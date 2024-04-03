@@ -42,6 +42,19 @@ Route::get('/dashboard/news/edit/{id}', [\App\Http\Controllers\NewsController::c
 
 Route::post('/dashboard/news/{id}', [\App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
 
+Route::get('/dashboard/albums', [\App\Http\Controllers\AlbumController::class, 'index'])->name('albums.index');
+
+Route::get('/dashboard/albums/create', [\App\Http\Controllers\AlbumController::class, 'create'])->name('albums.create');
+
+Route::post('/dashboard/albums', [\App\Http\Controllers\AlbumController::class, 'store'])->name('albums.store');
+
+Route::delete('/dashboard/albums/delete/{id}', [\App\Http\Controllers\AlbumController::class, 'destroy'])->name('albums.destroy');
+
+Route::get('/dashboard/albums/edit/{id}', [\App\Http\Controllers\AlbumController::class, 'edit'])->name('albums.edit');
+
+Route::post('/dashboard/albums/{id}', [\App\Http\Controllers\AlbumController::class, 'update'])->name('albums.update');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
