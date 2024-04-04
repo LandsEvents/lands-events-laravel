@@ -34,3 +34,11 @@ Route::get('/news', function () {
 Route::get('/news/{id}', function (int $id) {
     return (new App\Http\Controllers\NewsController())->getId($id);
 });
+
+Route::get('/albums', function () {
+    return (new App\Http\Controllers\AlbumController())->getAll();
+});
+
+Route::get('/albums/{id}', function (int $id) {
+    return (new App\Http\Controllers\AlbumController())->getId($id);
+});
