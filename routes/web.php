@@ -54,6 +54,20 @@ Route::get('/dashboard/albums/edit/{id}', [\App\Http\Controllers\AlbumController
 
 Route::post('/dashboard/albums/{id}', [\App\Http\Controllers\AlbumController::class, 'update'])->name('albums.update');
 
+Route::get('/dashboard/images', [\App\Http\Controllers\ImageController::class, 'index'])->name('images.index');
+
+Route::get('/dashboard/images/create', [\App\Http\Controllers\ImageController::class, 'create'])->name('images.create');
+
+Route::post('/dashboard/images', [\App\Http\Controllers\ImageController::class, 'store'])->name('images.store');
+
+Route::delete('/dashboard/images/delete/{id}', [\App\Http\Controllers\ImageController::class, 'destroy'])->name('images.destroy');
+
+Route::get('/dashboard/images/edit/{id}', [\App\Http\Controllers\ImageController::class, 'edit'])->name('images.edit');
+
+Route::post('/dashboard/images/{id}', [\App\Http\Controllers\ImageController::class, 'update'])->name('images.update');
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

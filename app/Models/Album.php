@@ -12,11 +12,11 @@ class Album extends Model
     public $timestamps = true; // Add this line
     use HasFactory;
 
-    protected $table = 'album';
-
-    protected $primaryKey = 'idAlbum';
+//    protected $table = 'album';
+//
+//    protected $primaryKey = 'idAlbum';
 
     function images() {
-        return $this->hasMany('Image', 'idimage');
+        return $this->hasMany('Image', 'image_id');
     }
 }
