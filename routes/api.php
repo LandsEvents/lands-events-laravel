@@ -42,3 +42,7 @@ Route::get('/albums', function () {
 Route::get('/albums/{id}', function (int $id) {
     return (new App\Http\Controllers\AlbumController())->getId($id);
 });
+
+Route::get('/images/{id}', function (int $id) {
+    return (new App\Http\Controllers\ImageController())->getWithId($id);
+});
